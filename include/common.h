@@ -6,7 +6,7 @@
 namespace cppgrad
 {
 
-	enum class status_e
+	enum class status_e : std::uint8_t
 	{
 		ok = 0,
 		numerical_err,
