@@ -53,7 +53,7 @@ namespace cppgrad::linalg
 		matrix operator+(const matrix &m) const noexcept;
 
 		/**
-		 * @brief Substract this matrix with another.
+		 * @brief Subtract this matrix with another.
 		 * @param m Matrix to subtract with.
 		 * @return Result matrix.
 		 */
@@ -66,9 +66,15 @@ namespace cppgrad::linalg
 		void operator=(const matrix &m) noexcept;
 
 	private:
-		/// Underlying data. Row-first.
+		/// Underlying data. Row-major.
 		ScalarT data_[N_rows * N_cols];
 	};
+
+	/// 3x3 float matrix specialization.
+	using matrix3f = matrix<float,3,3>;
+
+	/// 3x3 double matrix specialization.
+	using matrix3d = matrix<double,3,3>;
 }
 
 #endif // __MATRIX_H__
