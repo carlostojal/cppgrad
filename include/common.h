@@ -8,6 +8,7 @@ namespace cppgrad
 
 	enum class status_e
 	{
+		ok,
 		numerical_err,
 		linalg_err
 	};
