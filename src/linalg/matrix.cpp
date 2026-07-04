@@ -40,3 +40,9 @@ cppgrad::status_e matrix<ScalarT, N_rows, N_cols>::set_elem(ScalarT value, std::
 
 	return status;
 }
+
+namespace cppgrad::linalg
+{
+	template class matrix<float, 3, 3>;
+	template class matrix<double, 3, 3>;
+}
