@@ -14,3 +14,6 @@ else()
 endif()
 
 target_include_directories(cppgrad PUBLIC include)
+
+add_executable(test_matrix tests/test_matrix.cpp)
+target_link_libraries(test_matrix PUBLIC cppgrad)
