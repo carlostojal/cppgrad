@@ -10,22 +10,22 @@ namespace cppgrad::operators
 	 * @class op
 	 * @brief Abstract operator.
 	 */
-	class op : node
+	class op : public node
 	{
 	public:
 		/**
 		 * @brief Operator computation.
 		 * @param op1 Left-hand operand.
 		 * @param op2 Right-hand operand.
-		 * @return Result value.
+		 * @param out Result value.
 		 */
-		virtual linalg::tensor forward(linalg::tensor op1, linalg::tensor op2) noexcept = 0;
+		virtual void forward(const linalg::tensor& op1, const linalg::tensor& op2, linalg::tensor& out) noexcept = 0;
 
 		/**
 		 * @brief Operator gradient.
-		 * @return Gradient value.
+		 * @param out Gradient value.
 		 */
-		virtual linalg::tensor grad(void) noexcept = 0;
+		virtual linalg::tensor grad(linalg::tensor& out) noexcept = 0;
 	};
 }
 
