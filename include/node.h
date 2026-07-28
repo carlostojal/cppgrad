@@ -33,6 +33,13 @@ namespace cppgrad
 		 */
 		void set_parent(const std::unique_ptr<node>& parent) noexcept;
 
+
+		/**
+		 * @brief Node children getter.
+		 * @return Reference to set of children references.
+		 */
+		const std::unordered_set<const std::unique_ptr<node>&>& get_children(void) const noexcept;
+
 	private:
 
 		/// Reference to parent node.
