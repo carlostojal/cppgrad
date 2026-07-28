@@ -25,28 +25,27 @@ namespace cppgrad
 		 * @brief Add a child node.
 		 * @param new_child Reference to child node to add.
 		 */
-		void add_child(const std::unique_ptr<node>& new_child) noexcept;
-
-		/**
-		 * @brief Set the parent node.
-		 * @param parent Reference to parent node.
-		 */
-		void set_parent(const std::unique_ptr<node>& parent) noexcept;
-
+		void add_child(std::unique_ptr<node> new_child) noexcept;
 
 		/**
 		 * @brief Node children getter.
 		 * @return Reference to set of children references.
 		 */
-		const std::unordered_set<const std::unique_ptr<node>&>& get_children(void) const noexcept;
+		std::unordered_set<std::unique_ptr<node>>& get_children(void) noexcept;
+
+		/**
+		 * @brief Parent node getter.
+		 * @return Reference to parent node.
+		 */
+		const std::unique_ptr<node>& get_parent(void) const noexcept;
 
 	private:
 
 		/// Reference to parent node.
-		const std::unique_ptr<node>& parent;
+		const std::unique_ptr<node>& parent_;
 
 		/// Set of references to children nodes.
-		std::unordered_set<const std::unique_ptr<node>&> children = {};
+		std::unordered_set<std::unique_ptr<node>> children_ = {};
 	};
 }
 
