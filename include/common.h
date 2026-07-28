@@ -6,12 +6,13 @@
 namespace cppgrad
 {
 
+	/// Return codes.
 	enum class status_e : std::uint8_t
 	{
-		ok = 0,
-		numerical_err,
-		linalg_err,
-		out_of_bounds
+		ok = 0,			///< Success.
+		numerical_err,	///< Numerical error.
+		linalg_err,		///< Linear algebra error.
+		out_of_bounds	///< Out of bounds error.
 	};
 }
 
