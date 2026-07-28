@@ -12,7 +12,8 @@ namespace cppgrad
 		ok = 0,			///< Success.
 		numerical_err,	///< Numerical error.
 		linalg_err,		///< Linear algebra error.
-		out_of_bounds	///< Out of bounds error.
+		out_of_bounds,	///< Out of bounds error.
+		memory_fault,	///< Memory-related fault.
 	};
 }
 
