@@ -44,7 +44,7 @@ namespace cppgrad
 		/// Reference to parent node.
 		const std::unique_ptr<node>& parent_;
 
-		/// Set of references to children nodes.
+		/// Set of children nodes.
 		std::unordered_set<std::unique_ptr<node>> children_ = {};
 	};
 }
