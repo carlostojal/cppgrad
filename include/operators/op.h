@@ -14,6 +14,13 @@ namespace cppgrad::operators
 	class op : public node
 	{
 	public:
+
+		/**
+		 * @brief Constructor.
+		 * @param with_grad Will compute gradients?
+		 */
+		op(bool with_grad = true) noexcept;
+
 		/**
 		 * @brief Operator computation.
 		 * @param op1 Left-hand operand.
@@ -27,6 +34,10 @@ namespace cppgrad::operators
 		 * @param out Gradient value.
 		 */
 		virtual void grad(linalg::tensor<ScalarT>& out) noexcept = 0;
+
+	protected:
+		/// Compute gradients?
+		bool with_grad_ = true;
 	};
 }
 

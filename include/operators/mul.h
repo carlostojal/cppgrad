@@ -10,9 +10,16 @@ namespace cppgrad::operators
 	 * @brief Multiplication (product) operator.
 	 */
 	template <typename ValueT>
-	class mul : public op
+	class mul : public op<ValueT>
 	{
 	public:
+
+		/**
+		 * @brief Constructor.
+		 * @param with_grad Will compute gradients?
+		 */
+		mul(bool with_grad = true) noexcept;
+
 		/**
 		 * @brief Multiplication computation.
 		 * @param op1 Left-hand operand.
