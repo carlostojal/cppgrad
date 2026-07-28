@@ -32,7 +32,19 @@ status_e tensor<ScalarT>::get_flat_idx(const std::vector<std::size_t>& idx, std:
 
 	if(idx.size() == this->dims_.size())
 	{
-		// TODO: extract index
+		flat_idx = 0;
+		for(std::size_t i = 0; i < idx.size(); i++)
+		{
+			if(idx[i] < this->dims_[i])
+			{
+				flat_idx = flat_idx * this->dims_[i] + idx[i];
+			}
+			else
+			{
+				// out of bounds for this dimension
+				err = status_e::out_of_bounds;
+			}
+		}
 	}
 	else
 	{
@@ -52,6 +64,33 @@ status_e tensor<ScalarT>::get_elem(const std::vector<std::size_t>& idx, ScalarT&
 	{
 		std::size_t flat_idx;
 		err = this->get_flat_idx(idx, flat_idx);
+		if(err == status_e::ok)
+		{
+			out = this->values_[flat_idx];
+		}
+	}
+	else
+	{
+		// values were not allocated
+		err = status_e::memory_fault;
+	}
+
+	return err;
+}
+
+template <typename ScalarT>
+status_e tensor<ScalarT>::set_elem(const std::vector<std::size_t>& idx, ScalarT value) noexcept
+{
+	status_e err = status_e::ok;
+
+	if(this->values_ != nullptr)
+	{
+		std::size_t flat_idx;
+		err = this->get_flat_idx(idx, flat_idx);
+		if(err == status_e::ok)
+		{
+			this->values_[flat_idx] = value;
+		}
 	}
 	else
 	{
