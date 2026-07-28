@@ -6,7 +6,9 @@ namespace cppgrad::linalg
 	/**
 	 * @class tensor
 	 * @brief Tensor.
+	 * @tparam ScalarT Underlying scalar type.
 	 */
+	template <typename ScalarT>
 	class tensor
 	{
 

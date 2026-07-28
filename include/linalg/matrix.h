@@ -5,6 +5,7 @@
 #include <cstddef>
 
 #include "common.h"
+#include "linalg/tensor.h"
 
 namespace cppgrad::linalg
 {
@@ -16,7 +17,7 @@ namespace cppgrad::linalg
 	 * @tparam N_cols Number of matrix columns.
 	 */
 	template <typename ScalarT, std::size_t N_rows, std::size_t N_cols>
-	class matrix
+	class matrix : public tensor<ScalarT>
 	{
 	public:
 		/// Constructor.
