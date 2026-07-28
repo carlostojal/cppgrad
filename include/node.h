@@ -11,6 +11,7 @@ namespace cppgrad
 	 * @brief Represents a graph node.
 	 * A graph node contains references to its children and parent.
 	 */
+	template <typename ValueT>
 	class node
 	{
 	public:
@@ -46,6 +47,9 @@ namespace cppgrad
 
 		/// Set of children nodes.
 		std::unordered_set<std::unique_ptr<node>> children_ = {};
+
+		/// Node internal value.
+		ValueT value_;
 	};
 }
 
