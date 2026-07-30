@@ -14,6 +14,7 @@ tensor<ScalarT>::tensor(const std::vector<std::size_t>& dims) noexcept
 
 	this->dims_ = dims;
 	this->values_ = malloc(tensor_size * sizeof(ScalarT));
+	this->grad_ = nullptr;
 }
 
 template <typename ScalarT>
@@ -22,6 +23,11 @@ tensor<ScalarT>::~tensor(void) noexcept
 	if(this->values_ != nullptr)
 	{
 		free(this->values_);
+	}
+
+	if(this->grad_ != nullptr)
+	{
+		free(this->grad_);
 	}
 }
 
@@ -99,4 +105,22 @@ status_e tensor<ScalarT>::set_elem(const std::vector<std::size_t>& idx, ScalarT 
 	}
 
 	return err;
+}
+
+template <typename ScalarT>
+std::size_t tensor<ScalarT>::get_ndims(void) const noexcept
+{
+	return this->dims_.size();
+}
+
+template <typename ScalarT>
+ScalarT* tensor<ScalarT>::get_values(void) noexcept
+{
+	return this->values_;
+}
+
+template <typename ScalarT>
+ScalarT* tensor<ScalarT>::get_grad(void) noexcept
+{
+	return this->grad_;
 }

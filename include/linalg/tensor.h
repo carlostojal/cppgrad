@@ -44,6 +44,24 @@ namespace cppgrad::linalg
 		 */
 		status_e set_elem(const std::vector<std::size_t>& idx, ScalarT value) noexcept;
 
+		/**
+		 * @brief Get number of dimensions.
+		 * @return Number of tensor dimensions.
+		 */
+		std::size_t get_ndims(void) const noexcept;
+
+		/**
+		 * @brief Get raw tensor values.
+		 * @return Tensor values.
+		 */
+		ScalarT* get_values(void) noexcept;
+
+		/**
+		 * @brief Get raw tensor gradients.
+		 * @return Tensor gradients.
+		 */
+		ScalarT* get_grad(void) noexcept;
+
 	private:
 
 		/**
@@ -59,6 +77,9 @@ namespace cppgrad::linalg
 
 		/// Tensor values.
 		ScalarT* values_ = nullptr;
+
+		/// Tensor gradients.
+		ScalarT* grad_ = nullptr;
 	};
 }
 
